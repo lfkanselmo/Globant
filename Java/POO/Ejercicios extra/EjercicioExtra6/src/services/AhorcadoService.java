@@ -6,6 +6,7 @@
 package services;
 
 import entities.Ahorcado;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -22,7 +23,7 @@ public class AhorcadoService {
         "eterno resplandor de una mente sin recuerdos", "alien", "titanic"};
 
     //Metodo para crear un nuevo juego
-    public void nuevoJuego(int cantidadIntentos) {
+    public void nuevoJuego(int cantidadIntentos) {        
         int n = (int) (Math.random() * peliculas.length);
         String palabra = peliculas[n];
         ahorcado.setPalabra(palabra);
