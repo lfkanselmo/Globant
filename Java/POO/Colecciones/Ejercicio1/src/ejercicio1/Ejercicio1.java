@@ -52,6 +52,8 @@ public class Ejercicio1 {
 
         } while (continua == true);
 
+        System.out.println();
+        System.out.println("Razas de perros: ");
         for (String dog : dogs) {
             System.out.println(dog);
         }
