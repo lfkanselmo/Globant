@@ -86,7 +86,7 @@ public class DogService {
     public void deletBreed(String breed) {
 
         boolean exist = false;
-        Iterator it = dogsBreed.iterator();
+        Iterator<String> it = dogsBreed.iterator();
         do {
 
             while (it.hasNext()) {

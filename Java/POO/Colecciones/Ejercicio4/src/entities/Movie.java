@@ -50,7 +50,7 @@ public class Movie{
 
     @Override
     public String toString() {
-        return "Movie{" + "title=" + title + ", director=" + director + ", duration=" + duration + '}';
+        return "Titulo = " + title + ", Director = " + director + ", Duración = " + duration;
     }
     
     
