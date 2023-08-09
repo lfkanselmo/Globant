@@ -15,13 +15,17 @@ al usuario.
  */
 package main;
 
+import services.CountryService;
+
 /**
  *
  * @author Krausser
  */
 public class Main {
     public static void main(String[] args) {
+        CountryService countries = new CountryService();
         
+        countries.start();
     }
     
 }

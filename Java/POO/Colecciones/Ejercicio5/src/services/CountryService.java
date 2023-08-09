@@ -5,7 +5,12 @@
 package services;
 
 import entities.Country;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -33,7 +38,7 @@ public class CountryService {
                 addCountry();
             }
 
-            System.out.println("¿Desea ingresar otro país?");
+            System.out.println("¿Desea ingresar otro país? S/N");
             String answer = read.nextLine().toLowerCase();
 
             switch (answer) {
@@ -44,6 +49,7 @@ public class CountryService {
 
                 case "s":
                     pass = false;
+                    exit = false;
                     break;
 
                 default:
@@ -54,6 +60,10 @@ public class CountryService {
             }
 
         } while (exit == false);
+
+        showAll();
+        showAllOrder();
+        deleteCountry();
 
     }
 
@@ -76,5 +86,57 @@ public class CountryService {
             }
 
         } while (exit == false);
+
+        countries.add(country);
+    }
+
+    //metodo para mostrar todos los países
+    private void showAll() {
+        for (Country country : countries) {
+            System.out.println(country.toString());
+        }
+
+        System.out.println();
+    }
+
+    //Metodo para mostrar todos los paises ordenados
+    private void showAllOrder() {
+        List<Country> countriesList = new ArrayList<Country>(countries);
+        Collections.sort(countriesList, new Comparator<Country>() {
+            @Override
+            public int compare(Country c1, Country c2) {
+                return c1.getName().compareTo(c2.getName());
+            }
+
+        });
+
+        for (Country country : countriesList) {
+            System.out.println(country.toString());
+        }
+    }
+
+    //Metodo para buscar un pais y eliminarlo
+    private void deleteCountry() {
+        Iterator<Country> it = countries.iterator();
+        System.out.println();
+        System.out.println("Ingrese pais a eliminar");
+        String co = read.nextLine();
+        boolean found = false;
+
+        while (it.hasNext()) {
+            if (it.next().getName().equalsIgnoreCase(co)) {
+                it.remove();
+                found = true;
+                break;
+            }
+
+        }
+        
+        if (found) {
+                System.out.println(co + " eliminado");
+                showAll();
+            } else{
+                System.out.println("País no encontrado");
+            }
     }
 }
