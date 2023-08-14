@@ -12,12 +12,12 @@ import java.util.Scanner;
 
 /**
  *
- * @author 507
+ * @author Krausser
  */
 public class LibraryService {
 
     Scanner read = new Scanner(System.in).useDelimiter("\n");
-    HashSet<Book> library = new HashSet<Book>();
+    HashSet<Book> library = new HashSet<>();
     Book book;
 
     //metodo para iniciar el programa
@@ -30,7 +30,6 @@ public class LibraryService {
         do {
             if (opcError == false) {
                 System.out.println("Agregar nuevo libro: ");
-                read.next();
                 newBook();
             }
 
@@ -39,7 +38,6 @@ public class LibraryService {
 
             switch (opc) {
                 case "S":
-                    newBook();
                     stayWorking = true;
                     opcError = false;
                     break;
@@ -61,25 +59,28 @@ public class LibraryService {
     //Metodo para crear un nuevo libro
     private void newBook() {
         book = new Book();
-        System.out.println("Ingrese el titulo del libro");
+        System.out.println("Ingrese el titulo del libro: ");
+        read.next();
         book.setTitle(read.nextLine());
         System.out.println();
         System.out.println("Ingrese el autor del libro: ");
+        read.next();
         book.setAutor(read.nextLine());
         book.setCopies(validation("Ingrese la cantidad de ejemplares: "));
 
         library.add(book);
         System.out.println("Libro agregado con éxito");
+
     }
 
     //Metodo prestamo
-    private void borrowed() {
+    public void borrowed() {
         System.out.println("Ingrese el libro que desea prestar: ");
         String bk = read.nextLine();
 
         Iterator<Book> it = library.iterator();
         boolean found = false;
-        
+
         while (it.hasNext()) {
 
             Book aux = it.next();
@@ -98,12 +99,61 @@ public class LibraryService {
             }
 
         }
-        
+
         if (!found) {
             System.out.println("Libro solicidato no existe en la librería");
             System.out.println();
+
         }
 
+    }
+
+    //funcion para devolucion de libro
+    public void returnBook() {
+        System.out.println("Ingrese el libro que desea prestar: ");
+        String bk = read.nextLine();
+
+        Iterator<Book> it = library.iterator();
+        boolean found = false;
+
+        while (it.hasNext()) {
+            Book next = it.next();
+
+            if (next.getTitle().equalsIgnoreCase(bk)) {
+                if (next.getBorrowed() != 0) {
+                    next.setBorrowed(next.getBorrowed() - 1);
+                    System.out.println("Libro devuelto con exito");
+                    System.out.println();
+                    break;
+                } else {
+                    System.out.println("No hay copias prestadas de este libro");
+                    break;
+                }
+            } else {
+                found = false;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Libro solicidato no existe en la librería");
+            System.out.println();
+
+        }
+
+    }
+
+    //Metodo para mostrar los libros 
+    public void showAll() {
+
+        Iterator<Book> it = library.iterator();
+
+        while (it.hasNext()) {
+            Book next = it.next();
+
+            System.out.println(next);
+
+        }
+        System.out.println();
     }
 
     //función para validar el ingreso de números
@@ -118,8 +168,8 @@ public class LibraryService {
             } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Valor ingresado no número, intente de nuevo");
-                num = -1;
                 read.next();
+                num = -1;
             }
 
             if (num < 0) {

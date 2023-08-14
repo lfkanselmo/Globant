@@ -21,6 +21,7 @@ public class IntegerList {
     public void startList() {
         list = new ArrayList<Integer>();
         System.out.println(" ****** BIENVENIDO ****** ");
+        System.out.println();
         Integer num = 0;
         boolean exit = true;
 
@@ -30,7 +31,6 @@ public class IntegerList {
 
             if (num != -99) {
                 list.add(num);
-                System.out.println();
                 System.out.println("número agregado con éxito");
                 System.out.println();
             } else {
@@ -40,28 +40,27 @@ public class IntegerList {
 
         } while (exit);
     }
-    
+
     //Metodo para mostrar los valores del arreglo
-    public void showAll(){
-        for(Integer num : list){
+    public void showAll() {
+        for (Integer num : list) {
             System.out.println(num);
         }
         System.out.println();
     }
-    
+
     //Metodo para suma y promedio
-    public void calculate(){
+    public void calculate() {
         Integer sum = 0;
-        Double avr = 0.0;
-        for(Integer num : list){
+        for (Integer num : list) {
             sum += num;
         }
-        
-        avr = ((double) sum / list.size());
-        
+
+        Double avr = ((double) sum / list.size());
+
         System.out.println("El total de la suma es: " + sum);
         System.out.println("El promedio es: " + avr);
-        
+
     }
 
 }
