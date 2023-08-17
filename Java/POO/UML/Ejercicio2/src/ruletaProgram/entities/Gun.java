@@ -35,7 +35,7 @@ public class Gun {
     }
 
     //Metodo llenar el revolver
-    public void fullGun() {
+    public void fillGun() {
         currentPosition = (int) (Math.random() * 8 + 1);
         bulletPosition = (int) (Math.random() * 8 + 1);
     }

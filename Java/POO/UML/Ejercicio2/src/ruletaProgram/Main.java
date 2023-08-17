@@ -4,7 +4,6 @@
 package ruletaProgram;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import ruletaProgram.entities.Game;
 import ruletaProgram.entities.Gun;
@@ -36,15 +35,11 @@ public class Main {
             players.add(new Player(i+1));
         }
         
-        for(Player pl : players){
-            System.out.println(pl.getName());
-        }
-        
-        revolver.fullGun();
+        revolver.fillGun();
         System.out.println(revolver.toString());
         
         Game game = new Game();
-        game.fullGame(players, revolver);
+        game.fillGame(players, revolver);
         game.round();
     }
     

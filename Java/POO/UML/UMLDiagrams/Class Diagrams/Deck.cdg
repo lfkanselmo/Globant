@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="GunGamer">
+  <ClassDiagramComponents>
+    <Class name="Card" package="" visibility="public" xPosition="255.0" yPosition="208.0">
+      <Fields>
+        <Field name="num" type="int" visibility="private"/>
+        <Field name="suit" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="card" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Deck" package="" visibility="public" xPosition="22.0" yPosition="160.0">
+      <Fields>
+        <Field name="deck" type="HashMap" visibility="private"/>
+        <Field name="card" type="Card" visibility="private"/>
+        <Field name="pile" type="HashMap" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="shuffle" returnType="void" visibility="public"/>
+        <Method name="nextCard" returnType="Card" visibility="public"/>
+        <Method name="availableCards" returnType="void" visibility="public"/>
+        <Method name="giveCards" returnType="void" visibility="public"/>
+        <Method name="pileCards" returnType="void" visibility="public"/>
+        <Method name="showDeck" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="card" source="Deck" target="Card" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

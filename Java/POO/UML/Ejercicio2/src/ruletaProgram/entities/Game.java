@@ -14,7 +14,7 @@ public class Game {
     private List<Player> players = new ArrayList<>();
     private Gun revolver = new Gun();
 
-    public void fullGame(ArrayList<Player> players, Gun revolver) {
+    public void fillGame(ArrayList<Player> players, Gun revolver) {
         this.players = players;
         this.revolver = revolver;
     }
