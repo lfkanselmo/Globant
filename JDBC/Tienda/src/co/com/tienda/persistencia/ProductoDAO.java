@@ -10,34 +10,32 @@ import java.util.List;
 public class ProductoDAO extends DAO {
 
     private final FabricanteDAO fDAO = new FabricanteDAO();
-    
+
     // Metodo para crear un producto
-    public int crearProducto(Producto producto){
-        
+    public int crearProducto(Producto producto) {
+
         try {
-            query = "INSERT INTO producto(nombre,precio,codigo_fabricante)" + "\n" +
-                    "VALUES('" + producto.getNombreProducto() + "'," +
-                    producto.getPrecioProducto() + "," +
-                    producto.getFabricante().getIdFabricante() + ");";
-            
+            query = "INSERT INTO producto(nombre,precio,codigo_fabricante)" + "\n"
+                    + "VALUES('" + producto.getNombreProducto() + "',"
+                    + producto.getPrecioProducto() + ","
+                    + producto.getFabricante().getIdFabricante() + ");";
+
             conectarBase();
             alterarBD(query);
-            
-            if(cambios > 0){
+
+            if (cambios > 0) {
                 System.out.println("Producto creado con éxito");
             }
-            
+
         } catch (Exception e) {
             System.out.println("No se pudo crear el producto");
-        }finally{
+        } finally {
             desconectarBase();
         }
-        
-        
+
         return cambios;
     }
-    
-    
+
     // Metodo para listar todos los productos
     public List<Producto> listarProductos(String queryExter) {
 
@@ -57,12 +55,12 @@ public class ProductoDAO extends DAO {
         return productos;
 
     }
-    
+
     // Metodo para traer un producto por su codigo
-    public Producto productoById(int id){
+    public Producto productoById(int id) {
         Producto producto = null;
         List<Producto> productos = new ArrayList<>();
-        
+
         try {
             query = "SELECT * FROM producto WHERE codigo = " + id + ";";
             conectarBase();
@@ -73,27 +71,46 @@ public class ProductoDAO extends DAO {
             }
         } catch (Exception e) {
             System.out.println("no se pudo traer el Producto con codigo " + id);
-        }finally{
+        } finally {
             desconectarBase();
         }
-        
-        
+
         return producto;
     }
-    
+
+    // Metodo para modificar producto
+    public int modificarProducto(Producto producto) {
+
+        try {
+            query = "UPDATE producto" +
+                    " SET nombre = '" + producto.getNombreProducto() + "'," +
+                    " precio = " + producto.getPrecioProducto() + "," +
+                    " codigo_fabricante = " + producto.getFabricante().getIdFabricante() +
+                    " WHERE codigo = " + producto.getIdProducto() + ";";
+
+            conectarBase();
+            alterarBD(query);
+        } catch (Exception e) {
+            System.out.println("No se pudo moficar el producto con codigo " + producto.getIdProducto());
+        } finally {
+            desconectarBase();
+        }
+
+        return cambios;
+    }
+
     // Metodo para eliminar productos
-    public int eliminarProducto(int id){
+    public int eliminarProducto(int id) {
         try {
             query = "DELETE FROM producto WHERE codigo = " + id + ";";
             conectarBase();
             alterarBD(query);
         } catch (Exception e) {
             System.out.println("No se pudo eliminar el producto");
-        }finally{
+        } finally {
             desconectarBase();
         }
-        
-        
+
         return cambios;
     }
 

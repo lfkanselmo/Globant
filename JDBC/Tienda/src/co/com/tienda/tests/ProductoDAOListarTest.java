@@ -18,7 +18,7 @@ public class ProductoDAOListarTest {
             System.out.println(pr);
         });
         
-        int n = 22;
+        int n = 13;
         System.out.println("-------------------------------------------------");
         System.out.println("PRODUCTO CON ID: " + n);
         Producto p2 = pDAO.productoById(n);
