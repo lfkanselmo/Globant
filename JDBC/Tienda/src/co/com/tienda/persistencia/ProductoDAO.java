@@ -23,9 +23,6 @@ public class ProductoDAO extends DAO {
             conectarBase();
             alterarBD(query);
 
-            if (cambios > 0) {
-                System.out.println("Producto creado con éxito");
-            }
 
         } catch (Exception e) {
             System.out.println("No se pudo crear el producto");

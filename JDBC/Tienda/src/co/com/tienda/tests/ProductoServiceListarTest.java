@@ -14,11 +14,11 @@ import co.com.tienda.servicios.ProductoService;
 public class ProductoServiceListarTest {
     
     public static void main(String[] args){
-        ProductoService.listarProductos();
-        //ProductoService.listarProductosNombreYPrecio();
-        //ProductoService.listarEntreDosPrecios(120, 202);
+        //ProductoService.listarNombreProductos();
+        ProductoService.listarProductosNombreYPrecio();
+        ProductoService.listarEntreDosPrecios(202, 120);
         //ProductoService.listarPorNombreBuscado("portatil");
-        ProductoService.listarProductoMenorPrecio();
+        //ProductoService.listarProductoMenorPrecio();
     }
     
 }

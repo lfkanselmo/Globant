@@ -47,7 +47,7 @@ public class ProductoService {
     }
 
     // Listar todos los productos
-    public static void listarProductos() {
+    public static void listarNombreProductos() {
         query = "SELECT * FROM producto;";
         List<Producto> productos = daoP.listarProductos(query);
 
@@ -55,7 +55,7 @@ public class ProductoService {
             System.out.println();
             System.out.println("********* PRODUCTOS *********");
             productos.forEach((p) -> {
-                System.out.println(p);
+                System.out.println("Producto: " + p.getNombreProducto());
             });
         } else {
             System.out.println("No hay productos para mostrar");
@@ -80,7 +80,7 @@ public class ProductoService {
     }
 
     // Listar productos con precio comprendido entre 2 valores
-    public static void listarEntreDosPrecios(int n1, int n2) {
+    public static void listarEntreDosPrecios(double n1, double n2) {
         query = "SELECT * FROM producto "
                 + "WHERE precio BETWEEN " + n1 + " AND " + n2 + ";";
 
