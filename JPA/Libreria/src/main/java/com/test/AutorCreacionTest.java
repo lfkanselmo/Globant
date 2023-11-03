@@ -11,6 +11,5 @@ public class AutorCreacionTest {
         s.listarTodos();
         s.listarPorNombre();
         s.listarTodos();
-        s.close();
     }
 }

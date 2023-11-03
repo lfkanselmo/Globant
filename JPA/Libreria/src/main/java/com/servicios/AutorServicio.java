@@ -6,18 +6,24 @@ import com.entidades.Autor;
 import java.util.List;
 
 public class AutorServicio extends Servicio{
-    AutorDao dao = new AutorDao(em);
+    AutorDao dao = new AutorDao();
 
     public AutorServicio() {
         super();
     }
 
     public void crear(){
-        System.out.println();
-        System.out.println("Ingrese el nombre del autor: ");
-        String nombre = read.nextLine();
-        Autor autor = new Autor(nombre);
-        dao.crear(autor);
+
+        try {
+            System.out.println();
+            System.out.println("Ingrese el nombre del autor: ");
+            String nombre = read.nextLine();
+            Autor autor = new Autor(nombre);
+            dao.crear(autor);
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Autor");
+            System.out.println(e);
+        }
     }
 
     @Override
